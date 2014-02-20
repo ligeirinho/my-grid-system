@@ -1,0 +1,69 @@
+/**Author Tiago Porto **/
+
+
+//Define style of grid: Value default 'fixed'
+//Value fixed define width 960px
+//Value expanded define width 100%
+
+$style-grid: fixed;
+
+$grid-columns: 12;
+
+$full-width:"";
+
+//If $style-grid is expanded use value less than 10
+$gutter: 20;
+
+$padding: "";
+
+
+//Reset
+body{
+	margin: 0;
+	padding: 0;
+}
+
+
+
+@if $style-grid == fixed{
+	$full-width: 960px;
+	$padding: ($gutter/2)+ 0px;
+	$gutter: $gutter + 0px;
+}@else{
+	$full-width: 100%;
+	$padding: ($gutter/2)+  0%;
+	$gutter: $gutter + 0%;
+}
+
+
+
+
+.container{
+	width: $full-width;
+	margin: auto;
+}
+
+
+@for $i from 1 through $grid-columns{
+	.column-#{$i}{
+		width: (($full-width/$grid-columns)* $i) - $gutter;
+		padding:0 $padding;
+		display: inline;
+		float: left;
+	}
+}
+
+.initial{
+	margin-left:-$padding;
+}
+
+.end{
+	margin-right:-$padding;
+}
+
+
+
+@import "media_queries/max_320";
+@import "media_queries/max_480";
+@import "media_queries/min_481_max_767";
+@import "media_queries/min_768_max_1000";
