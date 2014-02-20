@@ -7,13 +7,16 @@
 
 $style-grid: fixed;
 
+//Defines number of columns in grid
+//Better grid fixed with 12 columns
 $grid-columns: 12;
 
-$full-width:"";
 
 //If $style-grid is expanded use value less than 10
 $gutter: 20;
 
+
+$full-width:"";
 $padding: "";
 
 
@@ -36,8 +39,6 @@ body{
 }
 
 
-
-
 .container{
 	width: $full-width;
 	margin: auto;
@@ -50,6 +51,15 @@ body{
 		padding:0 $padding;
 		display: inline;
 		float: left;
+		overflow: hidden;
+	}
+
+	.before-span-#{$i}{
+		margin-left: (($full-width/$grid-columns)* $i);
+	}
+
+	.after-span-#{$i}{
+		margin-right: (($full-width/$grid-columns)* $i);
 	}
 }
 

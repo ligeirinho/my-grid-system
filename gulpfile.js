@@ -5,10 +5,8 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),
 	clean = require('gulp-clean'),
 	concat = require('gulp-concat'),
-	compass = require('gulp-compass'),
 	sass = require('gulp-sass'),
 	path = require('path'),
-	minifyCSS = require('gulp-minify-css'),
 	watch = require('gulp-watch'),
 	livereload = require('gulp-livereload'),
 	lr = require('tiny-lr'),
@@ -30,39 +28,12 @@ gulp.task('images', function() {
 		.pipe(livereload(server));
 });
 
-// Compile Compass and Minify CSS
-gulp.task('compass', function() {
-	gulp.src([sass_path,  '!src/stylesheets/sass/media_queries/*'])
-	//gulp.src(sass_path)
-		.pipe(compass({
-			// config_file: '../config.rb',
-			project: path.join(__dirname, '/'),
-			css: 'project/css',
-			sass: 'src/stylesheets/sass',
-			image: 'src/images',
-			comments: false,
-			relative: false,
-		}))
-		//.pipe(gulp.dest('project/css'))
-		.pipe(livereload(server));
-});
-
 
 gulp.task('sass', function () {
     gulp.src([sass_path,  '!src/stylesheets/sass/media_queries/*'])
         .pipe(sass())
-        .pipe(gulp.dest('project/css'));
+        .pipe(gulp.dest('project/css'))
         .pipe(livereload(server));
-});
-
-
-// Concat and Minify Styles
-gulp.task('styles', function() {
-	gulp.src(css_path)
-	.pipe(concat('main.css'))
-	.pipe(minifyCSS())
-	.pipe(gulp.dest('project/css'))
-	.pipe(livereload(server));
 });
 
 // Clean Directories
@@ -85,7 +56,7 @@ gulp.task('watch', function() {
 
 		// Watch .scss files
 		gulp.watch(sass_path, function(event) {
-			gulp.run('compass');
+			gulp.run('sass');
 		});
 
 		// Watch .jpg .png .gif files
