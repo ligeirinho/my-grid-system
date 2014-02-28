@@ -14,7 +14,7 @@ var gulp = require('gulp'),
 
 // Path configs
 var	css_path  = 'project/css/**/*.css', // .css files
-	sass_path = 'src/stylesheets/sass/**/*.scss', // .sass files
+	sass_path = 'src/stylesheets/**/*.scss', // .sass files
 	img_path  = 'src/images/**/*.{png,jpg,gif}'; // image files
 
 
@@ -30,7 +30,7 @@ gulp.task('images', function() {
 
 
 gulp.task('sass', function () {
-    gulp.src([sass_path,  '!src/stylesheets/sass/media_queries/*'])
+    gulp.src([sass_path,  '!src/stylesheets/media_queries/*'])
         .pipe(sass())
         .pipe(gulp.dest('project/css'))
         .pipe(livereload(server));
