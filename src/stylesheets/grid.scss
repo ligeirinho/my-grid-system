@@ -1,4 +1,4 @@
-/**Author Tiago Porto **/
+/** Author Tiago Porto **/
 
 
 //Define style of grid: Value default 'fixed'
@@ -20,14 +20,6 @@ $full-width:"";
 $padding: "";
 
 
-//Reset
-body{
-	margin: 0;
-	padding: 0;
-}
-
-
-
 @if $style-grid == fixed{
 	$full-width: 960px;
 	$padding: ($gutter/2)+ 0px;
@@ -39,28 +31,25 @@ body{
 }
 
 
-.container{
-	width: $full-width;
-	margin: auto;
+// Placeholder
+
+%clear-box{
+	display: inline;
+	float: left;
+	overflow: hidden;
+	padding:0 $padding;
 }
 
 
-@for $i from 1 through $grid-columns{
-	.column-#{$i}{
-		width: (($full-width/$grid-columns)* $i) - $gutter;
-		padding:0 $padding;
-		display: inline;
-		float: left;
-		overflow: hidden;
-	}
+//Reset
+body{
+	margin: 0;
+	padding: 0;
+}
 
-	.before-span-#{$i}{
-		margin-left: (($full-width/$grid-columns)* $i);
-	}
-
-	.after-span-#{$i}{
-		margin-right: (($full-width/$grid-columns)* $i);
-	}
+.container{
+	width: $full-width;
+	margin: auto;
 }
 
 .initial{
@@ -71,6 +60,27 @@ body{
 	margin-right:-$padding;
 }
 
+/* Colummns */
+@for $i from 1 through $grid-columns{
+	.column-#{$i}{
+		width: (($full-width/$grid-columns)* $i) - $gutter;
+		@extend %clear-box;
+	}
+}
+
+/* Space Before */
+@for $i from 1 through $grid-columns{
+	.before-span-#{$i}{
+		margin-left: (($full-width/$grid-columns)* $i);
+	}
+}
+
+/* Space After */
+@for $i from 1 through $grid-columns{
+	.after-span-#{$i}{
+		margin-right: (($full-width/$grid-columns)* $i);
+	}
+}
 
 
 @import "media_queries/max_320";
