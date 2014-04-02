@@ -11,9 +11,11 @@ $style-grid: fixed;
 //Better grid fixed with 12 columns
 $grid-columns: 12;
 
+//Define gutter fixed
+$fixed-gutter: true;
 
 //If $style-grid is expanded use value less than 10
-$gutter: 20;
+$gutter: 10;
 
 
 $full-width:"";
@@ -26,8 +28,13 @@ $padding: "";
 	$gutter: $gutter + 0px;
 }@else{
 	$full-width: 100%;
-	$padding: ($gutter/2)+  0%;
-	$gutter: $gutter + 0%;
+	@if $fixed-gutter == true{
+		$padding: ($gutter/2)+  0px;
+		$gutter: $gutter + 0px;
+	}@else{
+		$padding: ($gutter/2)+  0%;
+		$gutter: $gutter + 0%;
+	}
 }
 
 
@@ -60,11 +67,24 @@ body{
 	margin-right:-$padding;
 }
 
+
 /* Colummns */
-@for $i from 1 through $grid-columns{
-	.column-#{$i}{
-		width: (($full-width/$grid-columns)* $i) - $gutter;
-		@extend %clear-box;
+@if $fixed-gutter == true{
+	@for $i from 1 through $grid-columns{
+		.column-#{$i}{
+			-webkit-box-sizing: border-box;
+			   -moz-box-sizing: border-box;
+					box-sizing: border-box;
+			width: (($full-width/$grid-columns)* $i);
+			@extend %clear-box;
+		}
+	}
+}@else{
+	@for $i from 1 through $grid-columns{
+		.column-#{$i}{
+			width: (($full-width/$grid-columns)* $i) - $gutter;
+			@extend %clear-box;
+		}
 	}
 }
 

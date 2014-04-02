@@ -3,7 +3,7 @@
   display: inline;
   float: left;
   overflow: hidden;
-  padding: 0 10px; }
+  padding: 0 5px; }
 
 body {
   margin: 0;
@@ -14,47 +14,83 @@ body {
   margin: auto; }
 
 .initial {
-  margin-left: -10px; }
+  margin-left: -5px; }
 
 .end {
-  margin-right: -10px; }
+  margin-right: -5px; }
 
 /* Colummns */
 .column-1 {
-  width: 60px; }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 80px; }
 
 .column-2 {
-  width: 140px; }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 160px; }
 
 .column-3 {
-  width: 220px; }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 240px; }
 
 .column-4 {
-  width: 300px; }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 320px; }
 
 .column-5 {
-  width: 380px; }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 400px; }
 
 .column-6 {
-  width: 460px; }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 480px; }
 
 .column-7 {
-  width: 540px; }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 560px; }
 
 .column-8 {
-  width: 620px; }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 640px; }
 
 .column-9 {
-  width: 700px; }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 720px; }
 
 .column-10 {
-  width: 780px; }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 800px; }
 
 .column-11 {
-  width: 860px; }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 880px; }
 
 .column-12 {
-  width: 940px; }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 960px; }
 
 /* Space Before */
 .before-span-1 {
