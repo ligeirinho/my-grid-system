@@ -1,6 +1,7 @@
 # Ignorar arquivos específicos
 .DS_Store
 Thumbs.db
+Icon
 
 # Ignorar todos os diretórios e arquivos em um diretório.
 node_modules/**/*
