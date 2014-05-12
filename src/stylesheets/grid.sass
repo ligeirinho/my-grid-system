@@ -1,0 +1,97 @@
+/* my grid system
+   Version: 1.0.0
+   Author: Tiago Porto
+   http://www.tiagoporto.com
+   https://github.com/tiagoporto
+   Contact: me@tiagoporto.com */
+
+
+//Define style of grid: Value default 'fixed'
+//Value fixed define width 960px
+//Value expanded define width 100%
+
+$style-grid: expanded
+
+//Defines number of columns in grid
+//Better grid fixed with 12 columns
+$grid-columns: 12
+
+//Define gutter fixed
+$fixed-gutter: true
+
+//If $style-grid is expanded use value less than 10
+$gutter: 10
+
+
+$full-width: ''
+$padding: ''
+
+
+@if $style-grid == fixed
+	$full-width: 960px
+	$padding: ($gutter/2)+ 0px
+	$gutter: $gutter + 0px
+@else
+	$full-width: 100%
+	@if $fixed-gutter == true
+		$padding: ($gutter/2) + 0px
+		$gutter: $gutter + 0px
+	@else
+		$padding: ($gutter/2) + 0%
+		$gutter: $gutter + 0%
+
+
+// Placeholder
+%clear-box
+	display: inline
+	float: left
+	overflow: hidden
+	padding: 0 $padding
+
+//Reset
+body
+	margin: 0
+	padding: 0
+
+.container
+	width: $full-width
+	margin: auto
+
+.initial
+	margin-left: -$padding
+
+.end
+	margin-right: -$padding
+
+
+/* Colummns */
+@if $fixed-gutter == true
+	@for $i from 1 through $grid-columns
+		.column-#{$i}
+			-webkit-box-sizing: border-box
+			-moz-box-sizing: border-box
+			box-sizing: border-box
+			width: (($full-width/$grid-columns)* $i)
+			@extend %clear-box
+
+@else
+	@for $i from 1 through $grid-columns
+		.column-#{$i}
+			width: (($full-width/$grid-columns)* $i) - $gutter
+			@extend %clear-box
+
+/* Space Before */
+@for $i from 1 through $grid-columns
+	.before-span-#{$i}
+		margin-left: (($full-width/$grid-columns)* $i)
+
+/* Space After */
+@for $i from 1 through $grid-columns
+	.after-span-#{$i}
+		margin-right: (($full-width/$grid-columns)* $i)
+
+
+@import "media_queries/min_768_max_1000"
+@import "media_queries/min_481_max_767"
+@import "media_queries/max_480"
+@import "media_queries/max_320"
