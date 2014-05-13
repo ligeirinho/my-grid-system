@@ -5,6 +5,7 @@
    https://github.com/tiagoporto
    Contact: me@tiagoporto.com */
 
+@import "compass"
 
 //Define style of grid: Value default 'fixed'
 //Value fixed define width 960px
@@ -14,7 +15,7 @@ $style-grid: expanded
 
 //Defines number of columns in grid
 //Better grid fixed with 12 columns
-$grid-columns: 12
+$grid-columns: 16
 
 //Define gutter fixed
 $fixed-gutter: true
@@ -47,6 +48,8 @@ $padding: ''
 	float: left
 	overflow: hidden
 	padding: 0 $padding
+	@if $fixed-gutter == true
+		+box-sizing(border-box)
 
 //Reset
 body
@@ -60,7 +63,7 @@ body
 .initial
 	margin-left: -$padding
 
-.end
+.final
 	margin-right: -$padding
 
 
@@ -68,9 +71,6 @@ body
 @if $fixed-gutter == true
 	@for $i from 1 through $grid-columns
 		.column-#{$i}
-			-webkit-box-sizing: border-box
-			-moz-box-sizing: border-box
-			box-sizing: border-box
 			width: (($full-width/$grid-columns)* $i)
 			@extend %clear-box
 

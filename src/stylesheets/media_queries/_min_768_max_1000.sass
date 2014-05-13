@@ -1,0 +1,34 @@
+/*media*/
+@media (min-width: 768px) and (max-width: 1000px)
+	@if $style-grid == expanded
+		$grid-responsive: 4
+
+		/* Colummns */
+		@if $fixed-gutter == true
+			@for $i from 1 through $grid-responsive
+				//Refazer logica
+				.column-#{$i}, .column-#{$i + $grid-responsive}, .column-#{$i + $grid-responsive * 2}, .column-#{$i + $grid-responsive * 3}
+					width: (($full-width/$grid-responsive) * $i)
+					@extend %clear-box
+			// @for $i from $grid-responsive + 1 through $grid-columns
+			// 	.column-#{$i}, .column-#{$i + $grid-responsive}
+			// 		width: (($full-width/$grid-responsive) * ($i - $grid-responsive))
+			// 		@extend %clear-box
+
+		// @else
+		// 	@for $i from 1 through $grid-columns
+		// 		.column-#{$i}
+		// 			width: (($full-width/$grid-columns)* $i) - $gutter
+		// 			@extend %clear-box
+
+		/* Space Before */
+		@for $i from 1 through $grid-responsive
+			.before-span-#{$i}, .before-span-#{$i + $grid-responsive}
+				margin-left: (($full-width/$grid-responsive)* $i)
+
+
+		/* Space After */
+		@for $i from 1 through $grid-responsive
+			.after-span-#{$i}, .after-span-#{$i + $grid-responsive}
+				margin-right: (($full-width/$grid-responsive)* $i)
+/*media
