@@ -1,4 +1,3 @@
-/*media*/
 @media (min-width: 768px) and (max-width: 1000px)
 	@if $style-grid == expanded
 		$grid-responsive: 4
@@ -22,13 +21,12 @@
 		// 			@extend %clear-box
 
 		/* Space Before */
-		@for $i from 1 through $grid-responsive
-			.before-span-#{$i}, .before-span-#{$i + $grid-responsive}
+		@for $i from 0 through $grid-responsive - 1
+			.before-span-#{$i}, .before-span-#{$i + $grid-responsive}, .before-span-#{$i + $grid-responsive * 2}, .before-span-#{$i + $grid-responsive * 3}
 				margin-left: (($full-width/$grid-responsive)* $i)
 
 
 		/* Space After */
-		@for $i from 1 through $grid-responsive
-			.after-span-#{$i}, .after-span-#{$i + $grid-responsive}
+		@for $i from 0 through $grid-responsive - 1
+			.after-span-#{$i}, .after-span-#{$i + $grid-responsive}, .after-span-#{$i + $grid-responsive * 2}, .after-span-#{$i + $grid-responsive * 3}
 				margin-right: (($full-width/$grid-responsive)* $i)
-/*media
