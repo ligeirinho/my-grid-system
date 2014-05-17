@@ -22,3 +22,4 @@ Add elastic layout
 
 
 [http://tableless.com.br/grids-semanticos-com-less/](http://tableless.com.br/grids-semanticos-com-less/)
+[http://artequalswork.com/posts/design-your-grid/](http://artequalswork.com/posts/design-your-grid/)
