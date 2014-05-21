@@ -9,19 +9,17 @@
 
 @import "config"
 
-@if $style-grid == fixed
+@if $style-grid == fixed or $style-grid == elastic
 	$full-width: 960px
-	$padding: ($gutter/2)+ 0px
-	$gutter: $gutter + 0px
 @else
 	$full-width: 100%
-	@if $fixed-gutter == true
-		$padding: ($gutter/2) + 0px
-		$gutter: $gutter + 0px
-	@else
-		$padding: ($gutter/2) + 0%
-		$gutter: $gutter + 0%
 
+@if $fixed-gutter == true and $style-grid == elastic or $fixed-gutter == false
+	$padding: ($gutter/2) + 0px
+	$gutter: $gutter + 0%
+@else
+	$padding: ($gutter/2) + 0px
+	$gutter: $gutter + 0px
 
 // Placeholder
 %clear-box
@@ -73,6 +71,6 @@ body
 
 
 @import "media_queries/min_768_max_1000"
-@import "media_queries/min_481_max_767"
-@import "media_queries/max_480"
-@import "media_queries/max_320"
+// @import "media_queries/min_481_max_767"
+// @import "media_queries/max_480"
+// @import "media_queries/max_320"

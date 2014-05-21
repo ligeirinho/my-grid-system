@@ -1,32 +1,45 @@
 @media (min-width: 768px) and (max-width: 1000px)
-	@if $style-grid == fluid
+	@if $style-grid == fluid or $style-grid == elastic
 		$grid-responsive: 4
+		$full-width: 100%
 
 		/* Colummns */
 		@if $fixed-gutter == true
 			@for $i from 1 through $grid-responsive
 				//Refazer logica
 				.column-#{$i}, .column-#{$i + $grid-responsive}, .column-#{$i + $grid-responsive * 2}, .column-#{$i + $grid-responsive * 3}
+
 					width: (($full-width/$grid-responsive) * $i)
 					@extend %clear-box
-			// @for $i from $grid-responsive + 1 through $grid-columns
-			// 	.column-#{$i}, .column-#{$i + $grid-responsive}
-			// 		width: (($full-width/$grid-responsive) * ($i - $grid-responsive))
-			// 		@extend %clear-box
+		@else
+			@for $i from 1 through $grid-columns
+				.column-#{$i}
+					width: (($full-width/$grid-columns)* $i) - $gutter
+					@extend %clear-box
 
-		// @else
-		// 	@for $i from 1 through $grid-columns
-		// 		.column-#{$i}
-		// 			width: (($full-width/$grid-columns)* $i) - $gutter
-		// 			@extend %clear-box
+
+
 
 		/* Space Before */
-		@for $i from 0 through $grid-responsive - 1
-			.before-span-#{$i}, .before-span-#{$i + $grid-responsive}, .before-span-#{$i + $grid-responsive * 2}, .before-span-#{$i + $grid-responsive * 3}
-				margin-left: (($full-width/$grid-responsive)* $i)
+		// @for $i from 0 through $grid-responsive - 1
+		// 	.before-span-#{$i}, .before-span-#{$i + $grid-responsive}, .before-span-#{$i + $grid-responsive * 2}, .before-span-#{$i + $grid-responsive * 3}
+		// 		margin-left: (($full-width/$grid-responsive)* $i)
 
 
 		/* Space After */
-		@for $i from 0 through $grid-responsive - 1
-			.after-span-#{$i}, .after-span-#{$i + $grid-responsive}, .after-span-#{$i + $grid-responsive * 2}, .after-span-#{$i + $grid-responsive * 3}
-				margin-right: (($full-width/$grid-responsive)* $i)
+		// @for $i from 0 through $grid-responsive - 1
+		// 	.after-span-#{$i}, .after-span-#{$i + $grid-responsive}, .after-span-#{$i + $grid-responsive * 2}, .after-span-#{$i + $grid-responsive * 3}
+		// 		margin-right: (($full-width/$grid-responsive)* $i)
+
+		%limpa
+			margin-left: 0
+			margin-right: 0
+
+
+		@for $i from 1 through $grid-columns
+			.before-span-#{$i}
+				@extend %limpa
+
+		@for $i from 1 through $grid-columns
+			.after-span-#{$i}
+				@extend %limpa

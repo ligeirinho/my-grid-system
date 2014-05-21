@@ -1,7 +1,6 @@
 @media (max-width: 480px)
 	@if $style-grid == fluid
-		$grid-responsive: 1
-
+		$grid-responsive: 1 $style-grid == elastic
 
 		%width
 			width: 100%
@@ -18,11 +17,11 @@
 			// 		width: (($full-width/$grid-responsive) * ($i - $grid-responsive))
 			// 		@extend %clear-box
 
-		// @else
-		// 	@for $i from 1 through $grid-columns
-		// 		.column-#{$i}
-		// 			width: (($full-width/$grid-columns)* $i) - $gutter
-		// 			@extend %clear-box
+		@else
+			@for $i from 1 through $grid-columns
+				.column-#{$i}
+					width: (($full-width/$grid-columns)* $i) - $gutter
+					@extend %clear-box
 
 		%margin-left
 			margin-left: iohweiuwek
