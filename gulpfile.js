@@ -1,15 +1,17 @@
 /*
-	Gulp.js Config File
-	Version: 1.0.0
+	My template gulp.js
+	Version: 1.0.2
 	Author: Tiago Porto - http://www.tiagoporto.com
 	https://github.com/tiagoporto
 	Contact: me@tiagoporto.com
 */
 
 //************************* Load dependencies ****************************//
+
 var		  gulp = require('gulp'),
 		uglify = require('gulp-uglify'),
 	  imagemin = require('gulp-imagemin'),
+		svgmin = require('gulp-svgmin'),
 		rename = require('gulp-rename'),
 		 clean = require('gulp-clean'),
 		concat = require('gulp-concat'),
@@ -22,6 +24,7 @@ var		  gulp = require('gulp'),
 		server = lr();
 
 //***************************** Path configs *****************************//
+
 var	   public_path = 'project/', // public files
 	 public_images = public_path + 'img', // optimized images
 	 public_styles = public_path + 'css', // minified styles
@@ -42,6 +45,15 @@ gulp.task('images', function() {
 		.pipe(notify({message: 'Images task complete'}));
 });
 
+//Otimize svg Images
+gulp.task('svgImagens', function() {
+	gulp.src(img_path + '**/*.svg')
+		.pipe(svgmin())
+		.pipe(gulp.dest(public_images))
+		.pipe(livereload(server))
+		.pipe(notify({message: 'SVG task complete'}));
+});
+
 // Concat and Minify Scripts
 gulp.task('scripts', function() {
 	gulp.src([js_path + '/libs/**',
@@ -51,7 +63,7 @@ gulp.task('scripts', function() {
 		      js_path + '/**/*.js',
 		      js_path + 'onread/close_onread.js'])
 		.pipe(concat('main.js'))
-		.pipe(gulp.dest('project/js'))
+		.pipe(gulp.dest(public_scripts))
 		.pipe(rename('main.min.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest(public_scripts))
@@ -67,7 +79,7 @@ gulp.task('compass', function() {
 			css: public_styles,
 			sass: sass_path,
 			image: img_path,
-			style: 'expanded', //The output style for the compiled css. Nested, expanded, compact, or compressed.
+			style: 'nested', //The output style for the compiled css. Nested, expanded, compact, or compressed.
 			comments: false,
 			relative: false,
 		}))
@@ -112,6 +124,11 @@ gulp.task('watch', function() {
 		  gulp.run('images');
 		});
 
+		// Watch .svg files
+		gulp.watch(img_path + '**/*.svg', function(event) {
+		  gulp.run('svgImagens');
+		});
+
 		//Watch .html .php Files
 		gulp.watch(public_path + '**/*.{html,php}', function(){
 			gulp.run('reload-browser');
@@ -121,6 +138,6 @@ gulp.task('watch', function() {
 });
 
 // Default task
-gulp.task('default', ['clean', 'compass', 'scripts', 'images'], function() {
+gulp.task('default', ['clean', 'compass', 'scripts', 'images', 'svgImagens'], function() {
 	gulp.run('watch');
 });
