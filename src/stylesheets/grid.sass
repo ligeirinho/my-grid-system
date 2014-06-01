@@ -69,8 +69,12 @@ body
 	.after-span-#{$i}
 		margin-right: (($full-width/$grid-columns)* $i)
 
+%limpa
+	margin-left: 0
+	margin-right: 0
+
 
 @import "media_queries/min_768_max_1000"
-// @import "media_queries/min_481_max_767"
-// @import "media_queries/max_480"
-// @import "media_queries/max_320"
+@import "media_queries/min_481_max_767"
+@import "media_queries/max_480"
+@import "media_queries/max_320"

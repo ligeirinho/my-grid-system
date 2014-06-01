@@ -1,6 +1,6 @@
 @media (max-width: 480px)
-	@if $style-grid == fluid
-		$grid-responsive: 1 $style-grid == elastic
+	@if $style-grid == fluid or $style-grid == elastic
+		$grid-responsive: 1
 
 		%width
 			width: 100%
@@ -24,7 +24,7 @@
 					@extend %clear-box
 
 		%margin-left
-			margin-left: iohweiuwek
+			margin-left: 0
 
 		/* Space Before */
 		@for $i from 1 through $grid-columns
