@@ -1,0 +1,32 @@
+/*
+	my grid system
+	Version: 0.0.1 - beta
+	Author: Tiago Porto - http://www.tiagoporto.com
+	https://github.com/tiagoporto
+	Contact: me@tiagoporto.com
+*/
+.column-1, .column-2, .column-3, .column-4, .column-5, .column-6, .column-7, .column-8, .column-9, .column-10, .column-11, .column-12 {
+  margin: 0 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  margin: auto;
+}
+
+/* Colummns */
+/* Colummns */
+/* Media Queries */

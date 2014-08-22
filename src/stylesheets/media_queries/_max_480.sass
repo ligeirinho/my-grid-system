@@ -1,40 +1,39 @@
-@media (max-width: 480px)
-	@if $style-grid == fluid or $style-grid == elastic
-		$grid-responsive: 1
+// @if $style-grid == fluid or $style-grid == elastic
+// 	$grid-responsive: 1
 
-		%width
-			width: 100%
+// 	%width
+// 		width: 100%
 
-		/* Colummns */
-		@if $fixed-gutter == true
-			@for $i from 1 through $grid-columns
-				//Refazer logica
-				.column-#{$i}
-					@extend %width
-					@extend %clear-box
-			// @for $i from $grid-responsive + 1 through $grid-columns
-			// 	.column-#{$i}, .column-#{$i + $grid-responsive}
-			// 		width: (($full-width/$grid-responsive) * ($i - $grid-responsive))
-			// 		@extend %clear-box
+// 	/* Colummns */
+// 	@if $fixed-gutter == true
+// 		@for $i from 1 through $grid-columns
+// 			//Refazer logica
+// 			.column-#{$i}
+// 				@extend %width
+// 				@extend %clear-box
+// 		// @for $i from $grid-responsive + 1 through $grid-columns
+// 		// 	.column-#{$i}, .column-#{$i + $grid-responsive}
+// 		// 		width: (($full-width/$grid-responsive) * ($i - $grid-responsive))
+// 		// 		@extend %clear-box
 
-		@else
-			@for $i from 1 through $grid-columns
-				.column-#{$i}
-					width: (($full-width/$grid-columns)* $i) - $gutter
-					@extend %clear-box
+// 	@else
+// 		@for $i from 1 through $grid-columns
+// 			.column-#{$i}
+// 				width: (($full-width/$grid-columns)* $i) - $gutter
+// 				@extend %clear-box
 
-		%margin-left
-			margin-left: 0
+// 	%margin-left
+// 		margin-left: 0
 
-		/* Space Before */
-		@for $i from 1 through $grid-columns
-			.before-span-#{$i}
-				@extend %margin-left
+// 	/* Space Before */
+// 	@for $i from 1 through $grid-columns
+// 		.before-span-#{$i}
+// 			@extend %margin-left
 
-		%margin-right
-			margin-right: 0
+// 	%margin-right
+// 		margin-right: 0
 
-		/* Space After */
-		@for $i from 1 through $grid-columns
-			.after-span-#{$i}
-				@extend %margin-right
+// 	/* Space After */
+// 	@for $i from 1 through $grid-columns
+// 		.after-span-#{$i}
+// 			@extend %margin-right

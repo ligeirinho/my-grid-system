@@ -1,0 +1,27 @@
+/*
+	my grid system
+	Version: 0.0.1 - beta
+	Author: Tiago Porto - http://www.tiagoporto.com
+	https://github.com/tiagoporto
+	Contact: me@tiagoporto.com
+*/
+
+@import "compass";
+
+@import "settings/config";
+
+@import "main/main";
+
+/* Media Queries */
+@media (max-width: 320px){
+	@import "media_queries/max_320";
+}
+@media (max-width: 480px){
+	@import "media_queries/max_480";
+}
+@media (min-width: 481px) and (max-width: 767px){
+	@import "media_queries/min_481_max_767";
+}
+@media (min-width: 768px) and (max-width: 1000px){
+	@import "media_queries/min_768_max_1000";
+}

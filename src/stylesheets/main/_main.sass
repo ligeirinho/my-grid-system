@@ -1,0 +1,93 @@
+@if $style-grid == fixed or $style-grid == elastic
+	$full-width: 960px
+@else
+	$full-width: 100%
+
+@if $fixed-gutter == true and $style-grid == elastic or $fixed-gutter == false
+	$padding: ($gutter/2) + 0px
+	$gutter: $gutter + 0%
+@else
+	$padding: ($gutter/2) + 0px
+	$gutter: $gutter + 0px
+
+// Placeholder
+%clear-box
+	display: inline
+	float: left
+	overflow: hidden
+	padding: 0 $padding
+	@if $fixed-gutter == true
+		+box-sizing(border-box)
+
+%clean
+	margin-left: 0
+	margin-right: 0
+
+%margin
+	margin: 0 $gutter
+
+
+
+//Reset
+body
+	margin: 0
+	padding: 0
+
+*,
+*:before,
+*:after
+	+box-sizing(border-box)
+
+
+.container
+	width: $full-width
+	margin: auto
+
+
+/* Colummns */
+@if $fixed-gutter == true
+	@for $i from 1 through $grid-columns
+		.column-#{$i}
+			//width: (($full-width/$grid-columns)* $i)
+			@extend %margin
+			//@extend %clear-box
+
+@else
+	@for $i from 1 through $grid-columns
+		.column-#{$i}
+			//width: (($full-width/$grid-columns)* $i) - $gutter
+			@extend %margin
+			//@extend %clear-box
+
+
+//old styles
+
+// .initial
+// 	margin-left: -$padding
+
+// .final
+// 	margin-right: -$padding
+
+
+/* Colummns */
+// @if $fixed-gutter == true
+// 	@for $i from 1 through $grid-columns
+// 		.column-#{$i}
+// 			width: (($full-width/$grid-columns)* $i)
+// 			@extend %clear-box
+
+// @else
+// 	@for $i from 1 through $grid-columns
+// 		.column-#{$i}
+// 			width: (($full-width/$grid-columns)* $i) - $gutter
+// 			@extend %clear-box
+
+// /* Space Before */
+// @for $i from 1 through $grid-columns
+// 	.before-span-#{$i}
+// 		margin-left: (($full-width/$grid-columns)* $i)
+
+// /* Space After */
+// @for $i from 1 through $grid-columns
+// 	.after-span-#{$i}
+// 		margin-right: (($full-width/$grid-columns)* $i)
