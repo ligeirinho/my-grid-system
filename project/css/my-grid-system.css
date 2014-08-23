@@ -5,7 +5,7 @@
 	https://github.com/tiagoporto
 	Contact: me@tiagoporto.com
 */
-.column-1, .column-2, .column-3, .column-4, .column-5, .column-6, .column-7, .column-8, .column-9, .column-10, .column-11, .column-12 {
+.container > .column-1, .container > .column-2, .container > .column-3, .container > .column-4, .container > .column-5, .container > .column-6, .container > .column-7, .container > .column-8, .container > .column-9, .container > .column-10, .container > .column-11, .container > .column-12 {
   margin: 0 10px;
 }
 
@@ -27,6 +27,5 @@ body {
   margin: auto;
 }
 
-/* Colummns */
 /* Colummns */
 /* Media Queries */

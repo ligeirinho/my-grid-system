@@ -10,7 +10,7 @@
 	$padding: ($gutter/2) + 0px
 	$gutter: $gutter + 0px
 
-// Placeholder
+// Placeholders
 %clear-box
 	display: inline
 	float: left
@@ -47,17 +47,13 @@ body
 /* Colummns */
 @if $fixed-gutter == true
 	@for $i from 1 through $grid-columns
-		.column-#{$i}
-			//width: (($full-width/$grid-columns)* $i)
+		.container > .column-#{$i}
 			@extend %margin
-			//@extend %clear-box
 
 @else
 	@for $i from 1 through $grid-columns
-		.column-#{$i}
-			//width: (($full-width/$grid-columns)* $i) - $gutter
+		.container > .column-#{$i}
 			@extend %margin
-			//@extend %clear-box
 
 
 //old styles
@@ -69,7 +65,7 @@ body
 // 	margin-right: -$padding
 
 
-/* Colummns */
+// /* Colummns */
 // @if $fixed-gutter == true
 // 	@for $i from 1 through $grid-columns
 // 		.column-#{$i}
