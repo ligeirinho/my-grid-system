@@ -8,7 +8,8 @@ Page [my grid system](http://tiagoporto.github.io/my-grid-system/).
 
 ## Reminders
 
-Add elastic layout
+Bug margin mode elastic
+Correct mode fluid
 
 ## References
 

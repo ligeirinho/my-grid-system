@@ -1,0 +1,31 @@
+/* Colummns */
+%clear-box
+	padding: 0 $padding
+
+@if $fixed-gutter == true
+	@for $i from 1 through $grid-columns
+		.column-#{$i}
+			width: (($full-width/$grid-columns)* $i)
+			@extend %clear-box
+
+@else
+	@for $i from 1 through $grid-columns
+		.column-#{$i}
+			width: (($full-width/$grid-columns)* $i) - $gutter
+			@extend %clear-box
+
+/* Space Before */
+@for $i from 1 through $grid-columns
+	.before-span-#{$i}
+		margin-left: (($full-width/$grid-columns)* $i)
+
+/* Space After */
+@for $i from 1 through $grid-columns
+	.after-span-#{$i}
+		margin-right: (($full-width/$grid-columns)* $i)
+
+.initial
+	margin-left: -$padding
+
+.final
+	margin-right: -$padding
