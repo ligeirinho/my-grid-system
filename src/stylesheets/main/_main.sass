@@ -1,34 +1,20 @@
-@if $style-grid == fixed or $style-grid == elastic
-	$full-width: 960px
-@else
-	$full-width: 100%
+$full-width: ''
+$padding: ''
 
-@if $fixed-gutter == true and $style-grid == elastic or $fixed-gutter == false
-	$padding: ($gutter/2) + 0px
-	$gutter: $gutter + 0%
+@if $style-grid == fluid
+	$full-width: 100%
 @else
+	$full-width: 960px
+
+
+@if $fixed-gutter == true
 	$padding: ($gutter/2) + 0px
 	$gutter: $gutter + 0px
+@else
+	$padding: ($gutter/2) + 0px
+	$gutter: $gutter + 0%
 
-// Placeholders
-%clear-box
-	display: inline
-	float: left
-	overflow: hidden
-	padding: 0 $padding
-	@if $fixed-gutter == true
-		+box-sizing(border-box)
-
-%clean
-	margin-left: 0
-	margin-right: 0
-
-%margin
-	margin: 0 $gutter
-
-
-
-//Reset
+/* Reset */
 body
 	margin: 0
 	padding: 0
@@ -39,21 +25,33 @@ body
 	+box-sizing(border-box)
 
 
+
 .container
 	width: $full-width
 	margin: auto
 
 
+// Placeholders
+
 /* Colummns */
+%clear-box
+	display: inline
+	float: left
+	overflow: hidden
+	padding: 0 $gutter
+
+
 @if $fixed-gutter == true
 	@for $i from 1 through $grid-columns
 		.container > .column-#{$i}
-			@extend %margin
+			width: (($full-width/$grid-columns)* $i)
+			@extend %clear-box
 
 @else
 	@for $i from 1 through $grid-columns
 		.container > .column-#{$i}
-			@extend %margin
+			width: (($full-width/$grid-columns)* $i) - $gutter
+			@extend %clear-box
 
 
 //old styles
