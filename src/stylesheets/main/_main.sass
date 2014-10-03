@@ -11,7 +11,7 @@ $padding: ''
 	$padding: ($gutter/2) + 0px
 	$gutter: $gutter + 0px
 @else
-	$padding: ($gutter/2) + 0px
+	$padding: ($gutter/2) + 0%
 	$gutter: $gutter + 0%
 
 /* Reset */
@@ -24,64 +24,49 @@ body
 *:after
 	+box-sizing(border-box)
 
+// Placeholder
+%clear-box
+	display: inline
+	float: left
+	overflow: hidden
+	padding: 0 $padding
 
+
+/* Main Box */
 
 .container
 	width: $full-width
 	margin: auto
 
-
-// Placeholders
-
 /* Colummns */
-%clear-box
-	display: inline
-	float: left
-	overflow: hidden
-	padding: 0 $gutter
-
 
 @if $fixed-gutter == true
 	@for $i from 1 through $grid-columns
-		.container > .column-#{$i}
+		.column-#{$i}
 			width: (($full-width/$grid-columns)* $i)
 			@extend %clear-box
 
 @else
 	@for $i from 1 through $grid-columns
-		.container > .column-#{$i}
+		.column-#{$i}
 			width: (($full-width/$grid-columns)* $i) - $gutter
 			@extend %clear-box
 
+.initial
+	margin-left: -$padding
 
-//old styles
+.final
+	margin-right: -$padding
 
-// .initial
-// 	margin-left: -$padding
+/* Space Before */
+@for $i from 1 through $grid-columns
+	.before-span-#{$i}
+		margin-left: (($full-width/$grid-columns)* $i)
 
-// .final
-// 	margin-right: -$padding
+/* Space After */
+@for $i from 1 through $grid-columns
+	.after-span-#{$i}
+		margin-right: (($full-width/$grid-columns)* $i)
 
 
-// /* Colummns */
-// @if $fixed-gutter == true
-// 	@for $i from 1 through $grid-columns
-// 		.column-#{$i}
-// 			width: (($full-width/$grid-columns)* $i)
-// 			@extend %clear-box
-
-// @else
-// 	@for $i from 1 through $grid-columns
-// 		.column-#{$i}
-// 			width: (($full-width/$grid-columns)* $i) - $gutter
-// 			@extend %clear-box
-
-// /* Space Before */
-// @for $i from 1 through $grid-columns
-// 	.before-span-#{$i}
-// 		margin-left: (($full-width/$grid-columns)* $i)
-
-// /* Space After */
-// @for $i from 1 through $grid-columns
-// 	.after-span-#{$i}
-// 		margin-right: (($full-width/$grid-columns)* $i)
+//Semantic

@@ -11,14 +11,15 @@
 //ELASTIC LAYOUT
 //Value "elastic" define max width 960px and less than 960px for 100%
 
-$style-grid: fluid
+$style-grid: fixed
 
 //Defines number of columns in grid
 //Better grid fixed with 12 columns
 $grid-columns: 12
 
 //Define gutter fixed, value "true" or "false"
+//Value true don't suported by old browsers because uses box-sizing
 $fixed-gutter: true
 
 //If $style-grid is fluid use value less than 10
-$gutter: 10
+$gutter: 20

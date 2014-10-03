@@ -41,8 +41,7 @@ gulp.task('images', function() {
 	gulp.src([img_path + '**/*.{png,jpg,gif}', '!' + img_path + '/icons/*'])
 		.pipe(imagemin({optimizationLevel: 4, progressive: true, cache: true}))
 		.pipe(gulp.dest(public_images))
-		.pipe(livereload(server))
-		.pipe(notify({message: 'Images task complete'}));
+		.pipe(livereload(server));
 });
 
 //Otimize svg Images
@@ -50,8 +49,7 @@ gulp.task('svgImagens', function() {
 	gulp.src(img_path + '**/*.svg')
 		.pipe(svgmin())
 		.pipe(gulp.dest(public_images))
-		.pipe(livereload(server))
-		.pipe(notify({message: 'SVG task complete'}));
+		.pipe(livereload(server));
 });
 
 // Concat and Minify Scripts
@@ -67,8 +65,7 @@ gulp.task('scripts', function() {
 		.pipe(rename('main.min.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest(public_scripts))
-		.pipe(livereload(server))
-		.pipe(notify({message: 'Scripts task complete'}));
+		.pipe(livereload(server));
 });
 
 // Compile Compass
@@ -83,8 +80,7 @@ gulp.task('compass', function() {
 			comments: false,
 			relative: false,
 		}))
-		.pipe(livereload(server))
-		.pipe(notify({message: 'Compass task complete'}));
+		.pipe(livereload(server));
 });
 
 // Clean Directories
@@ -92,15 +88,13 @@ gulp.task('clean', function() {
 	return gulp.src([public_styles,
 					 public_scripts,
 					 public_images], {read: false})
-		.pipe(clean())
-		.pipe(notify({message: 'Clean task complete'}));
+		.pipe(clean());
 });
 
 // Reload Browser
 gulp.task('reload-browser', function() {
 	gulp.src(public_path + '**/*.{html,php}')
-		.pipe(livereload(server))
-		.pipe(notify({message: 'Reload complete'}));
+		.pipe(livereload(server));
 });
 
 // Watch

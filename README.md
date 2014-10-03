@@ -24,7 +24,12 @@ Correct mode fluid
 [Golden grid](http://goldengridsystem.com/)
 [Frameless](http://framelessgrid.com/)
 [Less](http://lessframework.com/)
+[cssgrid](http://cssgrid.net/)
 
 
 [http://tableless.com.br/grids-semanticos-com-less/](http://tableless.com.br/grids-semanticos-com-less/)
 [http://artequalswork.com/posts/design-your-grid/](http://artequalswork.com/posts/design-your-grid/)
+
+http://gridcalculator.dk
+
+http://csswizardry.com/2013/02/responsive-grid-systems-a-solution/

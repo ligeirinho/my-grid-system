@@ -1,14 +1,14 @@
 @if $style-grid == elastic
 	$full-width: 100%
 
-.container
-	@extend %width
+	.container
+		@extend %width
 
 
-%width
-	width: $full-width
+	%width
+		width: $full-width
 
-@if $style-grid == elastic
-	@for $i from 1 through $grid-columns
-		.container > .column-#{$i}
-			@extend %width
+	@if $style-grid == elastic
+		@for $i from 1 through $grid-columns
+			.container > .column-#{$i}
+				@extend %width
