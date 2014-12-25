@@ -13,31 +13,31 @@ Correct mode fluid
 
 ## References
 
-*[Bootstrap](http://getbootstrap.com/css/#grid)
+* [Bootstrap](http://getbootstrap.com/css/#grid)
 
-*[960 grid System](http://960.gs/)
+* [960 grid System](http://960.gs/)
 
-*[blueprint](http://www.blueprintcss.org/)
+* [blueprint](http://www.blueprintcss.org/)
 
-*[semantic](http://semantic.gs/)
+* [semantic](http://semantic.gs/)
 
-*[unsemantic](http://unsemantic.com/)
+* [unsemantic](http://unsemantic.com/)
 
-*[Custom](http://custom.gs/)
+* [Custom](http://custom.gs/)
 
-*[Gridset](https://gridsetapp.com/)
+* [Gridset](https://gridsetapp.com/)
 
-*[Foundation](http://foundation.zurb.com/grid.html)
+* [Foundation](http://foundation.zurb.com/grid.html)
 
-*[Golden grid](http://goldengridsystem.com/)
+* [Golden grid](http://goldengridsystem.com/)
 
-*[Frameless](http://framelessgrid.com/)
+* [Frameless](http://framelessgrid.com/)
 
-*[Less](http://lessframework.com/)
+* [Less](http://lessframework.com/)
 
-*[cssgrid](http://cssgrid.net/)
+* [cssgrid](http://cssgrid.net/)
 
-*[jeet](http://jeet.gs/)
+* [jeet](http://jeet.gs/)
 
 [http://tableless.com.br/grids-semanticos-com-less/](http://tableless.com.br/grids-semanticos-com-less/)
 [http://artequalswork.com/posts/design-your-grid/](http://artequalswork.com/posts/design-your-grid/)
