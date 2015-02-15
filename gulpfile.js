@@ -10,14 +10,14 @@
 
 var		  gulp = require('gulp'),
 		uglify = require('gulp-uglify'),
-	  imagemin = require('gulp-imagemin'),
-		svgmin = require('gulp-svgmin'),
 		rename = require('gulp-rename'),
+		csso = require('gulp-csso'),
+  autoprefixer = require('gulp-autoprefixer'),
 		 clean = require('gulp-clean'),
 		concat = require('gulp-concat'),
+		plumber = require('gulp-plumber'),
 		notify = require('gulp-notify'),
-	   compass = require('gulp-compass'),
-		  path = require('path'),
+	   stylus = require('gulp-stylus'),
 		 watch = require('gulp-watch'),
 	livereload = require('gulp-livereload'),
 			lr = require('tiny-lr'),
@@ -29,28 +29,12 @@ var	   public_path = 'project/', // public files
 	 public_images = public_path + 'img', // optimized images
 	 public_styles = public_path + 'css', // minified styles
 	public_scripts = public_path + 'js', // concat and minify scripts
-		 sass_path = 'src/stylesheets/', // sass files
+	   stylus_path = 'src/stylesheets/', // stylus files
 		 js_path   = 'src/scripts/', // js files
 		 img_path  = 'src/images/'; // original image files
 
 
 //******************************** Tasks *********************************//
-
-// Optimize Images
-gulp.task('images', function() {
-	gulp.src([img_path + '**/*.{png,jpg,gif}', '!' + img_path + '/icons/*'])
-		.pipe(imagemin({optimizationLevel: 4, progressive: true, cache: true}))
-		.pipe(gulp.dest(public_images))
-		.pipe(livereload(server));
-});
-
-//Otimize svg Images
-gulp.task('svgImagens', function() {
-	gulp.src(img_path + '**/*.svg')
-		.pipe(svgmin())
-		.pipe(gulp.dest(public_images))
-		.pipe(livereload(server));
-});
 
 // Concat and Minify Scripts
 gulp.task('scripts', function() {
@@ -60,6 +44,7 @@ gulp.task('scripts', function() {
 		      js_path + 'onread/open_onread.js',
 		      js_path + '/**/*.js',
 		      js_path + 'onread/close_onread.js'])
+		.pipe(plumber())
 		.pipe(concat('main.js'))
 		.pipe(gulp.dest(public_scripts))
 		.pipe(rename('main.min.js'))
@@ -68,19 +53,21 @@ gulp.task('scripts', function() {
 		.pipe(livereload(server));
 });
 
-// Compile Compass
-gulp.task('compass', function() {
-	gulp.src(sass_path + '**/*.{sass,scss}')
-		.pipe(compass({
-			project: path.join(__dirname, '/'),
-			css: public_styles,
-			sass: sass_path,
-			image: img_path,
-			style: 'expanded', //The output style for the compiled css. Nested, expanded, compact, or compressed.
-			comments: false,
-			relative: false,
-		}))
-		.pipe(livereload(server));
+// Compile and Prefix Stylus Styles
+gulp.task('stylus', function () {
+	return	gulp.src([
+					stylus_path + '*.styl',
+					'!' + stylus_path + '_*.styl',
+				])
+				.pipe(stylus({'include css': true}))
+				.pipe(autoprefixer({
+					browsers: ['ie >= 8', 'ie_mob >= 10', 'Firefox > 24', 'last 10 Chrome versions', 'safari >= 6', 'opera >= 24', 'ios >= 6',  'android >= 4', 'bb >= 10']
+				}))
+				.pipe(gulp.dest(public_styles))
+				.pipe(csso())
+				.pipe(rename({suffix: '.min'}))
+				.pipe(gulp.dest(public_styles))
+				.pipe(notify({message: 'Styles task complete', onLast: true}));
 });
 
 // Clean Directories
@@ -108,19 +95,9 @@ gulp.task('watch', function() {
 			gulp.run('scripts');
 		});
 
-		// Watch sass files
-		gulp.watch(sass_path + '**/*.{sass,scss}', function(event) {
-			gulp.run('compass');
-		});
-
-		// Watch .jpg .png .gif files
-		gulp.watch(img_path + '**/*.{png,jpg,gif}', function(event) {
-		  gulp.run('images');
-		});
-
-		// Watch .svg files
-		gulp.watch(img_path + '**/*.svg', function(event) {
-		  gulp.run('svgImagens');
+		// Watch stylus files
+		gulp.watch(stylus_path + '**/*.styl', function(event) {
+			gulp.run('stylus');
 		});
 
 		//Watch .html .php Files
@@ -132,6 +109,6 @@ gulp.task('watch', function() {
 });
 
 // Default task
-gulp.task('default', ['clean', 'compass', 'scripts', 'images', 'svgImagens'], function() {
+gulp.task('default', ['clean', 'stylus', 'scripts'], function() {
 	gulp.run('watch');
 });
